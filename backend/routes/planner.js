@@ -22,8 +22,18 @@ router.post('/', (req, res) => {
 
   const result = findShortestPath(graph, source, destination, mode);
   if (!result) return res.status(404).json({ error: 'No path found' });
-
-  res.json(result);
+    let totalFare = 0;
+  for (let i = 0; i < result.path.length - 1; i++) {
+    const from = result.path[i];
+    const to = result.path[i + 1];
+    const edge = graph[from].find(n => n.to === to);
+    totalFare += edge.fare;
+  }
+  res.json({
+    path: result.path,
+    totalTime: result.total, 
+    totalFare
+  });
 });
 
 module.exports = router;

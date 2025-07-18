@@ -67,8 +67,8 @@ const PlannerForm = () => {
         <div className="result">
           <h4>🛤 Route:</h4>
           <p><strong>Stations:</strong> {result.path.join(' → ')}</p>
-          <p><strong>Total Time:</strong> {result.total} minutes</p>
-          <p><strong>Estimated Fare:</strong> ₹{result.total}</p>
+          <p><strong>Total Time:</strong> {result.totalTime} minutes</p>
+          <p><strong>Estimated Fare:</strong> ₹{result.totalFare}</p>
         </div>
       )}
     </div>
